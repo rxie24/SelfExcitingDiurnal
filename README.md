@@ -1,0 +1,1 @@
+This repository contains the code and summary data used to generate the tables and figures for the paper "Modeling Self-Exciting Diurnal Processes with Applications to Smartphone Use in Populations with Affective Disorders" by Xie et al. (2025).

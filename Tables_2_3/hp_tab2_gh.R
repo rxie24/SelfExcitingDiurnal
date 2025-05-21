@@ -1,8 +1,7 @@
 library(Rcpp)
 library(parallel)
 
-#Directory for base function files
-#wd_files <- "/Users/xieryan/Desktop/Dissertation_1/Base Functions/" #Local
+#Directory for base function files (MODIFY TO BE YOUR SPECIFIC DIRECTORY)
 wd_files <- "/home/xieryan/Dissertation1/Base_Functions/" #Cluster
 
 #Load in needed base function files
@@ -14,6 +13,9 @@ source(paste0(wd_files,"models_five.R"))
 source(paste0(wd_files,"chp_five.R"))
 source(paste0(wd_files,"chp_five_sim.R"))
 source(paste0(wd_files,"filt_outliers.R"))
+
+#Get set of scaled likelihoods under all five models for different sets of training and test datasets 
+#generated from Hawkes Process
 
 RNGkind("L'Ecuyer-CMRG")
 set.seed(215)

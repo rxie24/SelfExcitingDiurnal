@@ -1,9 +1,8 @@
 #Script encompassing code to generate histogram figures
 
-#Directory for base function files
-#wd_files <- "/Users/xieryan/Desktop/Dissertation_1/Base Functions/" #Local
+#Directory for base function files (MODIFY TO BE YOUR SPECIFIC DIRECTORY)
 wd_files <- "/home/xieryan/Dissertation1/Base_Functions/" #Cluster
-source(paste0(wd_files,"rope_functions.R"))
+source(paste0(wd_files,"rope_functions.R")) #load in necessary base function files
 
 cum_hist <- function(j,wdest,wddata){
   #id: individual
@@ -64,7 +63,7 @@ cum_hist <- function(j,wdest,wddata){
 
 #HISTOGRAMS OF ALL INDIVIDUALS
 
-#Load in directories for data and estimates
+#Load in directories for data and CLSE estimates (MODIFY TO BE YOUR SPECIFIC DIRECTORY)
 wdest <- "/home/xieryan/Dissertation1/Data/LSE_GH/"
 wddata <- "/home/xieryan/Dissertation1/Data/Real_Data_Event_Times_V2_GitHub/"
 

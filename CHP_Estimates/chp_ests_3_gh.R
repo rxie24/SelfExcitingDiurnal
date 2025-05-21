@@ -1,8 +1,7 @@
 library(Rcpp)
 library(parallel)
 
-#Directory for base function files
-#wd_files <- "/Users/xieryan/Desktop/Dissertation_1/Base Functions/" #Local
+#Directory for base function files (MODIFY TO BE YOUR SPECIFIC DIRECTORY)
 wd_files <- "/home/xieryan/Dissertation1/Base_Functions/" #Cluster
 
 source(paste0(wd_files,"base_chp.R"))
@@ -41,7 +40,7 @@ chp_llest <- function(k,wd,wddata){
 
 ids <- c(10,13,17)
 
-#Establish working directories to save parameter estimates and where data is located 
+#Establish working directories to saved CHP parameter estimates and where data is located (MODIFY TO BE YOUR SPECIFIC DIRECTORY)
 wd <- "/home/xieryan/Dissertation1/Data/CHP_GH/"
 wddata <- "/home/xieryan/Dissertation1/Data/Real_Data_Event_Times_V2_GitHub/"
 

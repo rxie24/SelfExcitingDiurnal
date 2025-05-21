@@ -1,9 +1,8 @@
 #Script encompassing code to generate histogram figures
 
-#Directory for base function files
-#wd_files <- "/Users/xieryan/Desktop/Dissertation_1/Base Functions/" #Local
+#Directory for base function files (MODIFY TO BE YOUR SPECIFIC DIRECTORY)
 wd_files <- "/home/xieryan/Dissertation1/Base_Functions/" #Cluster
-source(paste0(wd_files,"rope_functions.R"))
+source(paste0(wd_files,"rope_functions.R")) #load in necessary base function files
 
 cum_hist <- function(j,wdest,wddata){
   #id: individual
@@ -66,11 +65,11 @@ cum_hist <- function(j,wdest,wddata){
 
 #CHP HISTOGRAMS
 
-#Set directory of where all of the estimates are and data are
+#Set directory of where all of the CHP estimates are and data are (MODIFY TO BE YOUR SPECIFIC DIRECTORY)
 wdest <- "/home/xieryan/Dissertation1/Data/CHP_GH/"
 wddata <- "/home/xieryan/Dissertation1/Data/Real_Data_Event_Times_V2_GitHub/"
 
-pdf(file=paste0(wdest,"chp_hists_v2_final.pdf"),width=6,height=6) #width=4,height=4
+pdf(file=paste0(wdest,"chp_hists_v2_final.pdf"),width=6,height=6)
 par(mfrow=c(7,6),mar = c(1,1,0.25,0.5), oma = c(3, 3, 2.5, 0.5), mgp = c(2, 0.2, 0), tck = -0.05)
 for(j in 1:41){ 
   cum_hist(j,wdest,wddata)

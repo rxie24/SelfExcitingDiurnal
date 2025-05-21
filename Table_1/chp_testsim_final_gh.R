@@ -1,18 +1,18 @@
 library(Rcpp)
 library(parallel)
 
-#Directory for base function files
-#wd_files <- "/Users/xieryan/Desktop/Dissertation_1/Base Functions/" #Local
+#Directory for base function files (MODIFY TO BE YOUR SPECIFIC DIRECTORY)
 wd_files <- "/home/xieryan/Dissertation1/Base_Functions/" #Cluster
 
 #Load in needed base function files
 source(paste0(wd_files,"base_chp.R"))
 source(paste0(wd_files,"gen_data_chp.R"))
 
+#Create function to get CHP estimates from CHP simulated data w/ two sets of initial values
 chp_est <- function(i,theta,n=500){
   ltheta <- length(theta)
-  thetai <- rep(0,ltheta)
-  thetai2 <- 0.9*theta
+  thetai <- rep(0,ltheta) #first initial values: all 0
+  thetai2 <- 0.9*theta #second initial values: ninety percent of true
   
   mu <- theta[1]
   beta <- theta[2]
@@ -23,9 +23,9 @@ chp_est <- function(i,theta,n=500){
   eta <- theta[4:(4+ncoef-1)]
   gammas <- theta[(4+ncoef):ltheta]
   
-  times <- gen_data_chp(n,mu,beta,sigma,eta,gammas)
-  mles_chp1 <- chp_mles(thetai,times)
-  mles_chp2 <- chp_mles(thetai2,times)
+  times <- gen_data_chp(n,mu,beta,sigma,eta,gammas) #simulate CHP data
+  mles_chp1 <- chp_mles(thetai,times) #get estimates under first initial values (all 0)
+  mles_chp2 <- chp_mles(thetai2,times) #get estimates under second initial values (ninety percent of true)
   
   mles_chp <- rbind(mles_chp1,mles_chp2)
   return(mles_chp)
@@ -46,8 +46,6 @@ for(j in 1:100){
   est_mat[j,] <- estj[1,]
   est_mat2[j,] <- estj[2,]
 }
-
-## USING RESULTS BELOW ##
 
 #COMPARE 0 INTIALIZATION VERSUS 90% TRUE
 print("Initialize to 0")

@@ -1,4 +1,4 @@
-
+#Establish directory of saved CLSE likelihoods (MODIFY TO BE YOUR SPECIFIC DIRECTORY)
 wdest <- "/home/xieryan/Dissertation1/Data/LSE_GH/"
 
 #Create function to calculate AICs
@@ -24,7 +24,7 @@ aic_lls <- function(j,wdest,id_lls){
   return(aic_ids)
 }
 
-#Aggregrate likelihoods together
+#Aggregrate saved likelihoods together into matrix
 
 all_lls <- matrix(NA,nrow=41,ncol=4)
 

@@ -1,8 +1,7 @@
 library(Rcpp)
 library(parallel)
 
-#Directory for base function files
-#wd_files <- "/Users/xieryan/Desktop/Dissertation_1/Base Functions/" #Local
+#Directory for base function files (MODIFY TO BE YOUR OWN DIRECTORY)
 wd_files <- "/home/xieryan/Dissertation1/Base_Functions/" #Cluster
 
 #Load in needed base function files
@@ -13,13 +12,13 @@ source(paste0(wd_files,"chp_complls.R"))
 source(paste0(wd_files,"models_five.R"))
 source(paste0(wd_files,"filt_outliers.R"))
 
-#Fit five models for data generated from Linear Self-Exciting Model
+#Fit five models for data generated from Circadian Linear Self-Exciting Model
 five_lse <- function(i,theta_lse,thetai_chp,thetai_lse,N,b=2){
   
   #i: iteration number (for running tasks in parallel)
   #theta_lse: parameters used to generate test and training data sets
   #thetai_chp: initial parameters used for Circadian Hawkes Process
-  #thetai_lse: initial parameters used for Linear Self Exciting Processes
+  #thetai_lse: initial parameters used for Circadian Linear Self Exciting Processes
   #N: number of waiting times in training and test sets
   #b: order of linear self-exciting model
   
@@ -90,7 +89,7 @@ RNGkind("L'Ecuyer-CMRG")
 set.seed(215)
 
 #Get set of scaled likelihoods under all five models for different sets of training and test datasets 
-#generated from Circadian Hawkes Process
+#generated from Circadian Linear Self-Exciting Process
 
 #Set common parameters to test for 
 mu <- 0.1

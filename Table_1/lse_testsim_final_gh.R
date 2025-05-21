@@ -54,7 +54,7 @@ apply(est_mat,2,median,na.rm=TRUE)
 apply(est_mat,2,var,na.rm=TRUE)
 apply(est_mat,2,IQR,na.rm=TRUE)
 cor(est_mat[,2],est_mat[,3])
-#SDs = square root of variances
+#SDs = square root of variances or by apply(est_mat,2,sd,na.rm=TRUE)
 
 #Look at results when values initialized to 90% of true
 print("Initialize to Ninety Percent of True")
@@ -63,4 +63,4 @@ apply(est_mat2,2,median,na.rm=TRUE)
 apply(est_mat2,2,var,na.rm=TRUE)
 apply(est_mat2,2,IQR,na.rm=TRUE) 
 cor(est_mat2[,2],est_mat2[,3]) 
-#SDs = square root of variances
+#SDs = square root of variances or by apply(est_mat2,2,sd,na.rm=TRUE)

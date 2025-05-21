@@ -1,8 +1,7 @@
 library(Rcpp)
 library(parallel)
 
-#Directory for base function files
-#wd_files <- "/Users/xieryan/Desktop/Dissertation_1/Base Functions/" #Local
+#Directory for base function files (MODIFY TO BE YOUR SPECIFIC DIRECTORY)
 wd_files <- "/home/xieryan/Dissertation1/Base_Functions/" #Cluster
 
 #Load in needed base function files
@@ -102,17 +101,13 @@ miny2 <- min(lims3,lims4)
 maxy2 <- max(lims3,lims4)
 
 #Create plots
-#wd <- "/Users/xieryan/Desktop/Dissertation_1/Simulations/" 
+#Establish working directory to save resulting figure (MODIFY TO BE YOUR SPECIFIC DIRECTORY) 
 wd <- "/home/xieryan/Dissertation1/Simulations/"
 
 #Plot 1: Trajectories of all five model comparisons
-pdf(file=paste0(wd,"five_comp_final.pdf"), width = 5, height = 5) #png: filename
-#par(mfrow=c(2,2),mar = c(4,4,2,1),oma = c(0, 0, 3, 0))
+pdf(file=paste0(wd,"five_comp_final.pdf"), width = 5, height = 5)
 par(mfrow = c(2,2), mar = c(3,3,1.5,0.5), oma = c(2, 2, 2.5, 0))
 
-#plot(beta_seq,chp_testlls1,type="l",col="red",
-#     xlab="Beta",ylab="Test LL",main="N=50, Phi=0.2",
-#     ylim=c(miny1,maxy1))
 plot(beta_seq,chp_testlls1,type="l",col="red",
      xlab="",ylab="",main=expression(bold(paste("N=50, ", phi, " = 0.2"))),
      ylim=c(miny1,maxy1))
@@ -121,7 +116,6 @@ lines(beta_seq,pp_testlls1,col="purple")
 lines(beta_seq,cp_testlls1,col="orange")
 lines(beta_seq,lse_testlls1,col="green")
 axis(2, at = seq(0, 0.2, by = 0.1), labels = seq(0, 0.2, by = 0.1))  # Custom Y-ticks
-#box()
 
 plot(beta_seq,chp_testlls2,type="l",col="red",
      xlab="",ylab="",main=expression(bold(paste("N=500, ", phi, " = 0.2"))),
@@ -130,7 +124,6 @@ lines(beta_seq,hp_testlls2,col="blue")
 lines(beta_seq,pp_testlls2,col="purple")
 lines(beta_seq,cp_testlls2,col="orange")
 lines(beta_seq,lse_testlls2,col="green")
-#box()
 
 plot(beta_seq,chp_testlls3,type="l",col="red",
      xlab="",ylab="",main=expression(bold(paste("N=50, ", phi, " = -2"))),
@@ -139,7 +132,6 @@ lines(beta_seq,hp_testlls3,col="blue")
 lines(beta_seq,pp_testlls3,col="purple")
 lines(beta_seq,cp_testlls3,col="orange")
 lines(beta_seq,lse_testlls3,col="green")
-#box()
 
 plot(beta_seq,chp_testlls4,type="l",col="red",
      xlab="",ylab="",main=expression(bold(paste("N=500, ", phi, " = -2"))),
@@ -148,7 +140,6 @@ lines(beta_seq,hp_testlls4,col="blue")
 lines(beta_seq,pp_testlls4,col="purple")
 lines(beta_seq,cp_testlls4,col="orange")
 lines(beta_seq,lse_testlls4,col="green")
-#box()
 
 legend("bottomright",legend=c("CHP","Hawkes","Poisson","Circadian","CLSE"),
        fill=c("red","blue","purple","orange","green"),cex = 0.7)

@@ -1,11 +1,9 @@
 library(Rcpp)
-#library(parallel)
 
-#Directory for base function files
-#wd_files <- "/Users/xieryan/Desktop/Dissertation_1/Base Functions/" #Local
+#Directory for base function files (MODIFY TO BE YOUR SPECIFIC DIRECTORY)
 wd_files <- "/home/xieryan/Dissertation1/Base_Functions/" #Cluster
 
-#Load in base function files
+#Load in base function files (use CLSE model w/ constraint on waiting time)
 source(paste0(wd_files,"base_lse2.R"))
 source(paste0(wd_files,"lse_complls.R"))
 source(paste0(wd_files,"rope_functions.R"))
@@ -21,9 +19,7 @@ lse_llest <- function(k,wd,wddata,rp=10,nfc=4,b=2){
   ll_nc <- -1*lse_nc_ll(mles_nc,times,b=b)
   
   #Fit full LSE Model to the data
-  #thetai_lse <- rep(0,5)
   thetai_lse <- c(mles_nc,rep(0,2))
-  #thetai_lse <- 0.8*thetai_lse
   mles_lse <- lse_mles(thetai_lse,times,b=b)
   
   #Calculate total sum of squares (across cumulative and max)
@@ -75,9 +71,11 @@ lse_llest <- function(k,wd,wddata,rp=10,nfc=4,b=2){
   return(ll_est)
 }
 
+#Establish working directories to saved CLSE estimates and where data is located (MODIFY TO BE YOUR SPECIFIC DIRECTORY)
 wd <- "/home/xieryan/Dissertation1/Data/LSE_GH/"
 wddata <- "/home/xieryan/Dissertation1/Data/Real_Data_Event_Times_V2_GitHub/"
 
+#Generate vector of log-likelihoods under all fitted models for individual and save
 id_lls <- lse_llest(k=41,wd=wd,wddata=wddata,rp=0.005,nfc=4,b=2)
 
 saveRDS(object = id_lls,file=paste0(wd,"LSE_ID_LLs_Final3.rds")) 

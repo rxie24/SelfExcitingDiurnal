@@ -1,8 +1,6 @@
 library(Rcpp)
-#library(parallel)
 
-#Directory for base function files
-#wd_files <- "/Users/xieryan/Desktop/Dissertation_1/Base Functions/" #Local
+#Directory for base function files (MODIFY TO BE YOUR SPECIFIC DIRECTORY)
 wd_files <- "/home/xieryan/Dissertation1/Base_Functions/" #Cluster
 
 #Load in base function files
@@ -42,10 +40,11 @@ lse_llest <- function(k,wd,wddata,b=2){
   return(ll_est)
 }
 
-#Establish working directories to save parameter estimates and where data is located 
+#Establish working directories to saved CLSE parameter estimates and where data is located (MODIFY TO BE YOUR SPECIFIC DIRECTORY)
 wd <- "/home/xieryan/Dissertation1/Data/LSE_GH/"
 wddata <- "/home/xieryan/Dissertation1/Data/Real_Data_Event_Times_V2_GitHub/"
 
+#Generate vector of likelihoods for individual after fitting all models and save
 id_lls <- lse_llest(k=6,wd=wd,wddata=wddata,b=2)
 
 saveRDS(object = id_lls,file=paste0(wd,"LSE_ID_LLs_Final4.rds")) 

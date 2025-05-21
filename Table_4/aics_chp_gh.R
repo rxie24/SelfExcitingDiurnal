@@ -22,10 +22,10 @@ aic_lls <- function(j,wdest,id_lls){
   return(aic_ids)
 }
 
-#Set working directory for all of the estimates
+#Set working directory for all of the CHP likelihoods (MODIFY TO BE YOUR SPECIFIC DIRECTORY)
 wdest <- "/home/xieryan/Dissertation1/Data/CHP_GH/"
 
-#Aggregrate likelihoods together
+#Aggregrate saved likelihoods together into matrix
 
 all_lls <- matrix(NA,nrow=41,ncol=4)
 

@@ -33,9 +33,11 @@ hp_data <- gen_data_chp(ltimes,mu,beta,sigma,eta,gammas)
 #Plot Figure 1 (to prove Hawkes Process is insufficient)
 hist_breaks <- seq(0,24,1)
 
-pdf(file=paste0(wdest,"base_hawkes_example.pdf"),width=4,height=4)
+pdf(file=paste0(wdest,"base_hawkes_example3.pdf"),width=5,height=5) #or 4x4
+par(mgp = c(2.5, 1, 0), mar = c(4, 3.5, 0.1, 0.25))
 hist(times%%24,prob=TRUE,
-     breaks=hist_breaks, main="Individual Data Compared to Hawkes", 
+     #breaks=hist_breaks, main="Individual Data Compared to Hawkes", 
+     breaks=hist_breaks, main="",
      axes=FALSE, ylim=c(0,0.1),xlim=c(0,24),
      xlab="Time of Day (Hrs)")
 lines(density(hp_data%%24),col="blue")
